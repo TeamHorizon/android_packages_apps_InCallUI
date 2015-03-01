@@ -21,8 +21,8 @@
   <string name="callUnanswered_forwarded">Hovor bol neprijatý a presmerovaný</string>
   <string name="incall_call_type_label_forwarded">Presmerovaný hovor</string>
   <string name="card_title_dialing_waiting">Vytáčanie (čakanie\u2026)</string>
-  <string name="card_title_waiting_call">Čakajúci hovor</string>
   <string name="onscreenBlacklistText">Čierna listina</string>
+  <string name="call_recording_failed_message">Spustenie nahrávania hovoru zlyhalo</string>
   <string name="blacklist_dialog_title">Pridať na čiernu listinu</string>
   <string name="blacklist_dialog_message">Ďalšie prichádzajúce hovory z <xliff:g id="number">%s</xliff:g> budú blokované</string>
   <string name="card_title_video_call_paused">Videohovor (pozastavený)</string>

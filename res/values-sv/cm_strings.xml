@@ -21,7 +21,6 @@
   <string name="callUnanswered_forwarded">Samtal obesvarat och vidarebefordrat</string>
   <string name="incall_call_type_label_forwarded">Vidarebefordrat samtal</string>
   <string name="card_title_dialing_waiting">Ringer (väntar\u2026)</string>
-  <string name="card_title_waiting_call">Väntande samtal</string>
   <string name="onscreenBlacklistText">Svartlista</string>
   <string name="blacklist_dialog_title">Lägg till svartlistan</string>
   <string name="blacklist_dialog_message">Kommande samtal från <xliff:g id="number">%s</xliff:g> kommer att blockeras</string>
@@ -37,4 +36,5 @@
   <string name="sub_2">SIM 2</string>
   <string name="video_quality_high">hög</string>
   <string name="video_quality_low">låg</string>
+  <string name="video_quality_unknown">okänd</string>
 </resources>

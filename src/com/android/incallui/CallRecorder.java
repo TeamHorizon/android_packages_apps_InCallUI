@@ -153,21 +153,23 @@ public class CallRecorder implements CallList.Listener {
     }
 
     public void finishRecording() {
-        try {
-            final CallRecording recording = mService.stopRecording();
-            if (recording != null) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        CallRecordingDataStore dataStore = new CallRecordingDataStore();
-                        dataStore.open(mContext);
-                        dataStore.putRecording(recording);
-                        dataStore.close();
-                    }
-                }).start();
+        if (mService != null) {
+            try {
+                final CallRecording recording = mService.stopRecording();
+                if (recording != null) {
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            CallRecordingDataStore dataStore = new CallRecordingDataStore();
+                            dataStore.open(mContext);
+                            dataStore.putRecording(recording);
+                            dataStore.close();
+                        }
+                    }).start();
+                }
+            } catch (RemoteException e) {
+                Log.w(TAG, "Failed to stop recording", e);
             }
-        } catch (RemoteException e) {
-            Log.w(TAG, "Failed to stop recording", e);
         }
 
         for (RecordingProgressListener l : mProgressListeners) {
