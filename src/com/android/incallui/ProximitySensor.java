@@ -55,7 +55,7 @@ public class ProximitySensor implements AccelerometerListener.ChangeListener,
     private final AccelerometerListener mAccelerometerListener;
     private int mOrientation = AccelerometerListener.ORIENTATION_UNKNOWN;
     private boolean mUiShowing = false;
-    private boolean mIsPhoneOutgoing = false;
+    private boolean mHasOutgoingCall = false;
     private boolean mHasIncomingCall = false;
     private boolean mIsPhoneOffhook = false;
     private boolean mProximitySpeaker = false;
@@ -133,7 +133,7 @@ public class ProximitySensor implements AccelerometerListener.ChangeListener,
         boolean hasOngoingCall = InCallState.INCALL == newState && callList.hasLiveCall();
         boolean isOffhook = (InCallState.OUTGOING == newState) || hasOngoingCall;
         mHasIncomingCall = (InCallState.INCOMING == newState);
-        mIsPhoneOutgoing = (InCallState.OUTGOING == newState);
+        mHasOutgoingCall = (InCallState.OUTGOING == newState);
 
         if (isOffhook != mIsPhoneOffhook) {
             mIsPhoneOffhook = isOffhook;
@@ -336,7 +336,7 @@ public class ProximitySensor implements AccelerometerListener.ChangeListener,
                     if (!proxSpeakerIncallOnlyPref
                             // or if prox incall only is on, we have to check the call
                             // state to decide if AudioMode should be speaker
-                            || (proxSpeakerIncallOnlyPref && !mIsPhoneOutgoing)) {
+                            || (proxSpeakerIncallOnlyPref && !mHasOutgoingCall)) {
                         mHandler.postDelayed(mActivateSpeaker, mProxSpeakerDelay);
                     }
                 } else if (!speaker) {
