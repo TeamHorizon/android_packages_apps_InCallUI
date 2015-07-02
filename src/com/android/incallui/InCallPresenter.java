@@ -638,6 +638,12 @@ public class InCallPresenter implements CallList.Listener,
     }
 
     public void cancelAccountSelection() {
+        // By the time we receive this intent, we could be shut down and call list
+        // could be null.  Bail in those cases.
+        if (mCallList == null) {
+            return;
+        }
+
         mAccountSelectionCancelled = true;
         Call call = mCallList.getWaitingForAccountCall();
         if (call != null) {
