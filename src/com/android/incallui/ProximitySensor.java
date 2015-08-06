@@ -311,15 +311,15 @@ public class ProximitySensor implements AccelerometerListener.ChangeListener,
                     .add("aud", AudioState.audioRouteToString(audioMode))
                     .toString());
 
-            if ((mIsPhoneOffhook || mHasIncomingCall) && !screenOnImmediately) {
+            if (mIsPhoneOffhook && !screenOnImmediately) {
                 Log.d(this, "Turning on proximity sensor");
                 // Phone is in use!  Arrange for the screen to turn off
                 // automatically when the sensor detects a close object.
                 TelecomAdapter.getInstance().turnOnProximitySensor();
             } else {
                 Log.d(this, "Turning off proximity sensor");
-                // Phone is idle.  We don't want any special proximity sensor
-                // behavior in this case.
+                // Phone is either idle, or ringing.  We don't want any special proximity sensor
+                // behavior in either case.
                 TelecomAdapter.getInstance().turnOffProximitySensor(screenOnImmediately);
             }
     }

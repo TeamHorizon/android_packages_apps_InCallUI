@@ -393,6 +393,9 @@ public class InCallPresenter implements CallList.Listener,
             updateListeners = true;
             mInCallActivity = null;
 
+            // Cancel any pending dialogs
+            cancelAccountSelection();
+
             // We attempt cleanup for the destroy case but only after we recalculate the state
             // to see if we need to come back up or stay shut down. This is why we do the
             // cleanup after the call to onCallListChange() instead of directly here.
